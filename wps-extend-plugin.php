@@ -1,12 +1,18 @@
 <?php
 
 // Extend Gravity Forms
-new WPS_Extend_Plugin( 'gravityforms/gravityforms.php', __FILE__, '1.9', 'my-plugin-slug' );
+new WPS_Extend_Plugin( 'gravityforms/gravityforms.php', __FILE__, '1.9', 'my-plugin-text-domain' );
 
 // Extend AddThis
-new WPS_Extend_Plugin( 'addthis/addthis_social_widget.php', __FILE__, '1.9', 'my-plugin-slug' );
+new WPS_Extend_Plugin( 'addthis/addthis_social_widget.php', __FILE__, '1.9.13', 'my-plugin-text-domain' );
 
-// Extend Jetpack
+// Extend Jetpack, Gravity Forms, Display Posts Shortcode, Soliloquy
+wps_extend_plugins( array(
+	'gravityforms/gravityforms.php'                       => '1.9',
+	'display-posts-shortcode/display-posts-shortcode.php' => '2.5',
+	'jetpack/jetpack.php'                                 => '3.7',
+	'soliloquy/soliloquy.php'                             => '2.4.3',
+), __FILE__, 'my-plugin-text-domain' )
 
 if ( !function_exists( 'wps_extend_plugins' ) ) {
 	/**
