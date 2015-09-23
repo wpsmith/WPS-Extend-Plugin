@@ -1,5 +1,8 @@
 <?php
 
+// Require WPS_Extend_Plugin class
+require_once( 'classes/WPS_Extend_Plugin.php' );
+
 // Extend Gravity Forms
 new WPS_Extend_Plugin( 'gravityforms/gravityforms.php', __FILE__, '1.9', 'my-plugin-text-domain' );
 
