@@ -80,9 +80,12 @@ if ( !class_exists( 'WPS_Extend_Plugin' ) ) {
 			$this->root_file   = $root_file;
 			$this->min_version = $min_version ? $min_version : $this->min_version;
 			$this->text_domain = $text_domain ? $text_domain : $this->text_domain;
-
-			// Cannot add a notice since plugin has been deactivated
-			// Add notice since WP always seems to assume that the plugin was updated.
+			
+			/*
+			 * Cannot add a notice since plugin has been deactivated
+			 * Add notice since WP always seems to assume that the plugin was updated.
+			 * Cannot use 'deactivate_' . $plugin hook as it does not fire if plugin is silently deactivated (such as during an update)
+			 */
 			if ( 'plugins.php' === basename( $_SERVER['PHP_SELF'] ) && ! ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 				add_filter( 'plugin_action_links', array( $this, 'plugin_action_links' ), 10, 4 );
 				add_filter( 'network_admin_plugin_action_links', array( $this, 'plugin_action_links' ), 10, 4 );
@@ -91,6 +94,7 @@ if ( !class_exists( 'WPS_Extend_Plugin' ) ) {
 				add_action( 'update_option_active_sitewide_plugins', array( $this, 'maybe_deactivate' ), 10, 2 );
 				add_action( 'update_option_active_plugins', array( $this, 'maybe_deactivate' ), 10, 2 );
 			}
+
 		}
 
 		/**
@@ -267,26 +271,5 @@ if ( !class_exists( 'WPS_Extend_Plugin' ) ) {
 			}
 		}
 
-	}
-}
-
-if ( !function_exists( 'wps_extend_plugins' ) ) {
-	/**
-	 * Determines whether the plugins are active and available taking appropriate action if not.
-	 *
-	 * @since  Version 1.0.0
-	 * @author Travis Smith <t@wpsmith.net>
-	 *
-	 * @see    WPS_Extend_Plugin
-	 *
-	 * @param array       $plugins
-	 * @param string      $root_file   Plugin basename, File reference path to root including filename.
-	 * @param string|null $text_domain Text domain.
-	 */
-	function wps_extend_plugins( $plugins, $root_file, $text_domain = null ) {
-		$plugin_extensions = array();
-		foreach ( $plugins as $plugin => $min_version ) {
-			$plugin_extensions[ $plugin ] = new WPS_Extend_Plugin( $plugin, $root_file, $min_version, $text_domain );
-		}
 	}
 }
