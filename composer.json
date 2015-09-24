@@ -1,0 +1,24 @@
+{
+	"name"       : "wpsmith/wps-extend-plugin",
+	"description": "A class for your WordPress plugin to extend and declare another plugin as a plugin dependency.",
+	"keywords"   : ["wordpress", "plugin", "dependency", "extension"],
+	"homepage"   : "https://github.com/wpsmith/WPS-Extend-Plugin",
+	"license"    : "GPL-2.0+",
+	"authors"    : [
+		{
+			"name"    : "Travis Smith",
+			"email"   : "t@wpsmith.net",
+			"homepage": "http://wpsmith.net/",
+			"role"    : "Developer"
+		}
+	],
+	"support"    : {
+		"issues": "https://github.com/wpsmith/WPS-Extend-Plugin/issues"
+	},
+	"require"    : {
+		"php": ">=5.2.4"
+	},
+	"autoload"   : {
+		"classmap": ["WPS_Plugin_Extend.php"]
+	}
+}
