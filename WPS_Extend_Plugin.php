@@ -5,6 +5,7 @@
  * @package    WPS_Core
  * @author     Travis Smith <t@wpsmith.net>
  * @copyright  2015 WP Smith, Travis Smith
+ * @link       https://github.com/wpsmith/WPS-Extend-Plugin/
  * @license    http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @version    1.0.0
  * @since      File available since Release 1.0.0
@@ -18,7 +19,7 @@ if ( !class_exists( 'WPS_Extend_Plugin' ) ) {
 	 *
 	 * @since  Version 1.0.0
 	 * @author Travis Smith <t@wpsmith.net>
-	 *
+	 * @package WPS_Core
 	 */
 	class WPS_Extend_Plugin {
 
