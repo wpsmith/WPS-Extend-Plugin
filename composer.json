@@ -19,6 +19,6 @@
 		"php": ">=5.2.4"
 	},
 	"autoload"   : {
-		"classmap": ["WPS_Plugin_Extend.php"]
+		"classmap": ["WPS_Extend_Plugin.php"]
 	}
 }
